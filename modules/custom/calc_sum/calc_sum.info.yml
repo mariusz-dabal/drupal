@@ -1,0 +1,6 @@
+name: Custom module adding two fields values
+description: Module for adding two fields values.
+package: Custom
+
+type: module
+core: 8.x

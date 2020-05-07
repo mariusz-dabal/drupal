@@ -1,0 +1,21 @@
+<?php
+/**
+ * Implements hook_entity_view for node entities.
+ */
+
+function calc_sum_entity_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  if($entity->bundle() == 'test_content' && $view_mode == 'full') {
+
+    $min = $entity->field_min->value;
+    $max = $entity->field_max->value;
+
+    $sum = $min + $max;
+
+    $entity->body->value = 'The sum of min and max equals: ' . $sum;
+    $entity->save();
+
+    dpm($entity->body->value, $name = 'body');
+    dpm($view_mode, $name = 'view_mode');
+  }
+}
+
